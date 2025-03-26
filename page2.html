@@ -15,5 +15,24 @@
     <main>
       <h1>My other page</h1>
     </main>
+    <script>
+      function getCookie(name) {
+        let cookies = document.cookie.split("; ");
+        for (let cookie of cookies) {
+          let [key, value] = cookie.split("=");
+          if (key === name) return decodeURIComponent(value);
+        }
+        return null;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        let username = getCookie("username");
+        if (username) {
+          let userGreeting = document.createElement("p");
+          userGreeting.textContent = `Welcome, ${username}!`;
+          document.querySelector("main").appendChild(userGreeting);
+        }
+      });
+    </script>
   </body>
 </html>
